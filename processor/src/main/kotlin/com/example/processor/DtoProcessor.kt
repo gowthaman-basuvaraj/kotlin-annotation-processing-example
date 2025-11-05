@@ -91,8 +91,7 @@ class DtoProcessor : AbstractProcessor() {
         val writeFields = fields.filter { field ->
             val fieldName = field.simpleName.toString()
             // Exclude generated fields and explicitly excluded fields
-            !field.getAnnotation(Generated::class.java) != null &&
-            fieldName !in excludedFields
+            field.getAnnotation(Generated::class.java) == null && fieldName !in excludedFields
         }
 
         // Build class
